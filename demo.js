@@ -4,7 +4,7 @@ const InvestingScraper = require("./src/index.js");
 const demoRankings = true;
 
 // which NFT project to scrape?
-const symbol = "%5EGSPC";
+const symbol = "us-spx-500";
 const options = {
   debug: false,
   browserInstance: undefined,
@@ -16,7 +16,7 @@ console.log(options);
 (async () => {
   if (demoRankings) {
     console.log(`\n\n\n\n✅ === InvestingScraper.indexQuote() ===`);
-    const index = await InvestingScraper.indexQuote("us-spx-500", options);
+    const index = await InvestingScraper.indexQuote(symbol, options);
     console.log(index);
   }
 })();

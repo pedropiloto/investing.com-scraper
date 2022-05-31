@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-npm install investing-scraper
+npm install investing.com-scraper
 ```
 
 ## Usage
