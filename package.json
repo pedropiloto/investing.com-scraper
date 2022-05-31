@@ -1,0 +1,28 @@
+{
+  "name": "investing.com-scraper",
+  "version": "6.2.0",
+  "description": "Scraping quotes for indexes in investing.com, because, in the future stocks may be included.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "demo": "node demo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedropiloto/investing.com-scrapper.git"
+  },
+  "keywords": [
+    "scraper",
+    "investing",
+    "indexes",
+    "stocks"
+  ],
+  "author": "dcts",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "puppeteer": "^13.5.1",
+    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra-plugin-stealth": "^2.9.0"
+  }
+}
