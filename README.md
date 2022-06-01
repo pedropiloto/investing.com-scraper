@@ -18,7 +18,7 @@ npm install investing.com-scraper
 const InvestingScraper = require("investing-scraper");
 
 // which index to scrape?
-const symbol = "%5EGSPC";
+const symbol = "us-spx-500";
 
 // options
 const options = {
