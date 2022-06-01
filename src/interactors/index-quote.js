@@ -51,7 +51,7 @@ const readQuote = async (page) =>{
     const btn = document.getElementById("onetrust-accept-btn-handler");
     const quote = document.querySelector('[data-test="instrument-price-last"]').innerHTML;
     let change = document.querySelector('[data-test="instrument-price-change-percent"]').innerHTML;
-    change = change.replaceAll("<!-- -->%)","").replaceAll("(<!-- -->","").replaceAll("+<!-- -->","")
+    change = change.replace('(<!-- -->','').replace('<!-- -->%)','')
     return {quote, change}
   });
 }
