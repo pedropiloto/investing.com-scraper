@@ -39,20 +39,23 @@ const call = async (symbol, optionsGiven = {}) => {
   const url = `https://www.investing.com/indices/${symbol}`;
   await page.goto(url);
 
-  const data = await readQuote(page)
+  try {
+    return await readQuote(page)
+  } catch (e) {
+    console.log('Error Occurred', e)
+  } finally {
+    await browser.close()
+  }
 
-  await browser.close()
-
-  return data
 }
 
-const readQuote = async (page) =>{
+const readQuote = async (page) => {
   return await page.evaluate(() => {
     const btn = document.getElementById("onetrust-accept-btn-handler");
     const quote = document.querySelector('[data-test="instrument-price-last"]').innerHTML;
     let change = document.querySelector('[data-test="instrument-price-change-percent"]').innerHTML;
-    change = change.replace('(<!-- -->','').replace('<!-- -->%)','')
-    return {quote, change}
+    change = change.replace('(<!-- -->', '').replace('<!-- -->%)', '')
+    return { quote, change }
   });
 }
 
