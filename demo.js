@@ -18,6 +18,8 @@ console.log(options);
     console.log(`\n\n\n\n✅ === InvestingScraper.indexQuote() ===`);
     const index = await InvestingScraper.indexQuote(symbol, options);
     console.log(index);
+    const etf = await InvestingScraper.etfQuote('ishares-msci-world---acc', options);
+    console.log(etf);
   }
 })();
 

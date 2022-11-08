@@ -17,6 +17,7 @@ const { warnIfNotUsingStealth } = require("../helpers/helper-functions");
  * }
  */
 const call = async (symbol, optionsGiven = {}) => {
+  console.log('cenas', symbol)
   const optionsDefault = {
     debug: false,
     browserInstance: undefined,
@@ -24,7 +25,7 @@ const call = async (symbol, optionsGiven = {}) => {
   const options = { ...optionsDefault, ...optionsGiven };
   const { debug, browserInstance } = options;
   const customPuppeteerProvided = Boolean(optionsGiven.browserInstance);
-
+  
   // init browser
   let browser = browserInstance;
   if (!customPuppeteerProvided) {
@@ -34,9 +35,10 @@ const call = async (symbol, optionsGiven = {}) => {
     });
   }
   customPuppeteerProvided && warnIfNotUsingStealth(browser);
-
+  
   const page = await browser.newPage();
-  const url = `https://www.investing.com/indices/${symbol}`;
+  const url = `https://www.investing.com/etfs/${symbol}`;
+  console.log('cenas2', url)
   await page.goto(url);
 
   try {
@@ -51,10 +53,9 @@ const call = async (symbol, optionsGiven = {}) => {
 
 const readQuote = async (page) => {
   return await page.evaluate(() => {
-    const quote = document.querySelector('[data-test="instrument-price-last"]').innerHTML;
-    let change = document.querySelector('[data-test="instrument-price-change-percent"]').innerHTML;
-    change = change.replace('(<!-- -->', '').replace('<!-- -->%)', '').replace('<!-- -->', '').replace('(','').replace(')','')
-    return { quote, change }
+    const quote = document.getElementById('last_last').innerHTML;
+    let change = document.getElementsByClassName("pid-38423-pcp")
+    return { quote, change: change[0].innerHTML }
   });
 }
 
