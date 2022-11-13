@@ -22,7 +22,7 @@ const call = async (symbols, callback, delay = 10000, optionsGiven = {}) => {
     browserInstance: undefined,
   };
   const options = { ...optionsDefault, ...optionsGiven };
-  const { debug, browserInstance } = options;
+  const { debug, browserInstance, args } = options;
   const customPuppeteerProvided = Boolean(optionsGiven.browserInstance);
 
   // init browser
@@ -30,10 +30,10 @@ const call = async (symbols, callback, delay = 10000, optionsGiven = {}) => {
   if (!customPuppeteerProvided) {
     browser = await puppeteer.launch({
       headless: !debug, // when debug is true => headless should be false
-      args: ['--start-maximized'],
+      args: !!args ? args : ['--start-maximized'],
     });
   }
-  customPuppeteerProvided && warnIfNotUsingStealth(browser);
+  // customPuppeteerProvided && warnIfNotUsingStealth(browser);
 
   for (const symbol of symbols) {
 
