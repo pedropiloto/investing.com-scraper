@@ -61,7 +61,7 @@ const readPageQuote = async (symbol, page, callback) => {
 const readQuote = async (page) => {
   return await page.evaluate(async () => {
     const quote = document.getElementById('last_last').innerHTML;
-    const change = document.getElementById("chart-info-change-percent").innerText + '%'
+    const change = document.getElementById("chart-info-change-percent").innerText.replace('%','').replace('+','')
     return { quote, change }
   });
 }

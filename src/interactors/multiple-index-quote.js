@@ -61,7 +61,7 @@ const readQuote = async (page) => {
   return await page.evaluate(() => {
     const quote = document.querySelector('[data-test="instrument-price-last"]').innerHTML;
     let change = document.querySelector('[data-test="instrument-price-change-percent"]').innerHTML;
-    change = change.replace('(<!-- -->', '').replace('<!-- -->%)', '').replace('<!-- -->', '').replace('(', '').replace(')', '')
+    change = change.replace('(<!-- -->', '').replace('<!-- -->%)', '').replace('<!-- -->', '').replace('(', '').replace(')', '').replace('%','').replace('+','')
     return { quote, change }
   });
 }

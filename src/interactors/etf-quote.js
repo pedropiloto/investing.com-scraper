@@ -54,8 +54,8 @@ const call = async (symbol, optionsGiven = {}) => {
 const readQuote = async (page) => {
   return await page.evaluate(() => {
     const quote = document.getElementById('last_last').innerHTML;
-    let change = document.getElementsByClassName("pid-38423-pcp")
-    return { quote, change: change[0].innerHTML }
+    const change = document.getElementById("chart-info-change-percent").innerText.replace('%','').replace('+','')
+    return { quote, change}
   });
 }
 
