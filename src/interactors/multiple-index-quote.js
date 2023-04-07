@@ -53,7 +53,7 @@ const readPageQuote = async (symbol, page, callback) => {
     const quote = await readQuote(page)
     callback(symbol, quote)
   } catch (e) {
-    console.log('Error Occurred', e)
+    console.log(`Error Occurred Index ${symbol}`, e)
   }
 }
 

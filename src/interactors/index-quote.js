@@ -42,7 +42,7 @@ const call = async (symbol, optionsGiven = {}) => {
   try {
     return await readQuote(page)
   } catch (e) {
-    console.log('Error Occurred', e)
+    console.log(`Error Occurred Index ${symbol}`, e)
   } finally {
     await browser.close()
   }

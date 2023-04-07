@@ -17,7 +17,6 @@ const { warnIfNotUsingStealth } = require("../helpers/helper-functions");
  * }
  */
 const call = async (symbol, optionsGiven = {}) => {
-  console.log('cenas', symbol)
   const optionsDefault = {
     debug: false,
     browserInstance: undefined,
@@ -38,13 +37,12 @@ const call = async (symbol, optionsGiven = {}) => {
   
   const page = await browser.newPage();
   const url = `https://www.investing.com/etfs/${symbol}`;
-  console.log('cenas2', url)
   await page.goto(url);
 
   try {
     return await readQuote(page)
   } catch (e) {
-    console.log('Error Occurred', e)
+    console.log(`Error Occurred ETF ${symbol}`, e)
   } finally {
     await browser.close()
   }
