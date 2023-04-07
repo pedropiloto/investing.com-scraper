@@ -60,8 +60,9 @@ const readPageQuote = async (symbol, page, callback) => {
 
 const readQuote = async (page) => {
   return await page.evaluate(async () => {
-    const quote = document.getElementById('last_last').innerHTML;
-    const change = document.getElementById("chart-info-change-percent").innerText.replace('%','').replace('+','')
+    const quote = document.querySelector('[data-test="instrument-price-last"]').innerHTML;
+    let change = document.querySelector('[data-test="instrument-price-change-percent"]').innerHTML;
+    change = change.replace('(<!-- -->', '').replace('<!-- -->%)', '').replace('<!-- -->', '').replace('(', '').replace(')', '').replace('%','').replace('+','')
     return { quote, change }
   });
 }
