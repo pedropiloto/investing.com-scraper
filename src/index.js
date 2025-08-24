@@ -1,10 +1,9 @@
-const indexQuote = require("./interactors/index-quote.js");
-const multipleIndexQuote = require("./interactors/multiple-index-quote");
-const multipleEtfQuote = require("./interactors/multiple-etf-quote");
-const etfQuote = require("./interactors/etf-quote");
+const multipleQuoteV1 = require("./interactors/multiple-quote-v1.js");
+const multipleQuoteV2 = require("./interactors/multiple-quote-v2.js");
 
 const InvestingScraper = {
-  indexQuote, multipleIndexQuote, etfQuote, multipleEtfQuote
+  multipleQuoteV1, // puppeteer based
+  multipleQuoteV2, // axios + cheerio based
 };
 
 module.exports = InvestingScraper;
